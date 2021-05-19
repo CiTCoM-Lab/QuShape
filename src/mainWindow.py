@@ -656,8 +656,9 @@ class MainWindow(QtGui.QMainWindow):
                 self.projFileName=str(self.projFileName)
                 try:
                     self.openProject(self.projFileName)
-                except: 
-                    msg="Selected files is not appropriate to open in QuShape."
+                except Exception as e: 
+                    print traceback.format_exc()
+                    msg="Selected files is not appropriate to open in QuShape.\n" + str(e)
                     QtGui.QMessageBox.warning(self,"QuShape - ",msg)
      
     def openProject(self,projFile=None):
@@ -676,7 +677,12 @@ class MainWindow(QtGui.QMainWindow):
         self.dirty=False
         self.setOpenProject()
         
-        self.lastScript=self.dProject['scriptList'][-1]
+        try: 
+            self.lastScript=self.dProject['scriptList'][-1]
+        except:
+            raise ValueError, "Selected file is an empty project (no script launched)"
+
+        
         if self.lastScript not in ["Reactivity","Reactivity by Reference"]:
             self.checkScriptDraw(self.lastScript,self.intervalData[-1])
         self.nextStep(self.lastScript)
