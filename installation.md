@@ -10,7 +10,7 @@ Installation is made using conda.
 2. Download or clone this repository.
 3. From root of QuShape repos, create conda env
 ```bash
-conda env create --name qushape --file conda-env.yml
+conda env create --name qushape --file misc/conda-env.yml
 ```
 4. If your are using a unix like system, your need to correct a missing symbolic link
 ```bash

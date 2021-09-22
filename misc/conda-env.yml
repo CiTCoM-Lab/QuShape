@@ -2,7 +2,7 @@ name: qushape
 channels:
   - bioconda
   - conda-forge
-  - free
+  - free 
 dependencies:
     - python = 2.7
     - pyqt = 4
@@ -10,6 +10,4 @@ dependencies:
     - matplotlib
     - scipy
     - pip
-    - pip:
       - bsddb3
-
