@@ -10,4 +10,5 @@ dependencies:
     - matplotlib
     - scipy
     - pip
+    - pip:
       - bsddb3
