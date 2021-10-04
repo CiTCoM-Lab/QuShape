@@ -100,7 +100,7 @@ class MainWindow(QtGui.QMainWindow):
         iconNew= self.currentDir+"/Icons/filenew.png"
         iconOpen= self.currentDir+"/Icons/fileopen.png"
         iconSave= self.currentDir+"/Icons/filesave.png"
-        iconSaveAs= self.currentDir+"/Icons/filesaveAs.png"
+        iconSaveAs= self.currentDir+"/Icons/filesaveas.png"
         iconQuit= self.currentDir+"/Icons/filequit.png"
         
         newProjectAct = self.createAction("&New Project", self.newProject,QtGui.QKeySequence.New,iconNew)
@@ -1354,7 +1354,7 @@ if __name__ == '__main__':
     app.setOrganizationDomain("http://www.chem.unc.edu/rna/")
     app.setApplicationName("QuShape")
     app.setStyle(QtGui.QStyleFactory.create('Cleanlooks'))  
-    iconFileName=os.getcwd()+"/Icons/qushape_logo.png"
+    iconFileName=os.getcwd()+"/Icons/QuShapeIcon.png"
     app.setWindowIcon(QtGui.QIcon(iconFileName))
     form = MainWindow()
     form.show()
