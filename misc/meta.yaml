@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  script: "{{PYTHON}} -m pip install bsddb3 && {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
 
 requirements:
   host:
@@ -18,10 +18,10 @@ requirements:
     - pip
   run:
     - python =2.7
-    - pyqt =4.11.4
-    - numpy =1.16.5 
-    - matplotlib =2.2
-    - scipy =1.2
+    - pyqt =4
+    - numpy
+    - matplotlib
+    - scipy
     - pip
 #    - bsddb3
 
