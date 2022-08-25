@@ -1,0 +1,3 @@
+include qushape/*.png 
+include qushape/**/*.html
+include qushape/**/*.kpf
