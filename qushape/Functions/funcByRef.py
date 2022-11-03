@@ -5,7 +5,7 @@ from funcTimeWarp import autoROIwDTW
 from funcToolsAll import  autoDecaySum
 from funcToolsAll import findPeakMatchX, splineSampleData, findMatchX_DTW, dtwAlign2Cap, splineCap
 from funcToolsAll import correctSatd,smoothRect,baselineAdjust, smoothTriangle, fitLinear
-from imports import QtGui,QtCore
+from ..imports import QtGui,QtCore
 from funcToolsAll import fMobilityShift, dDyesWL
 from funcPeakAlign import  fPeakList
 from funcSeqAll import peakLinking

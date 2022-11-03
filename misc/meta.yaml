@@ -1,5 +1,5 @@
 {% set name = "QuShape" %}
-{% set version = "1.0.7" %}
+{% set version = "1.0.10" %}
 
 package:
   name: "{{ name|lower }}"
@@ -12,7 +12,6 @@ build:
   number: 0
   script: 
     - "{{ PYTHON }} -m pip install --no-deps --ignore-installed ."
-    - "cd $({{ PYTHON }} -c 'import os; print(os.path.dirname(os.__file__))') && ln -s site-packages/bsddb3/_pybsddb.so bsddb/_bsddb.so"
     # - "{{ PYTHON }} setup.py install" # --single-version-externally-managed --record=record.txt || exit 1; "
   
 requirements:

@@ -2,7 +2,7 @@ from ..imports import QtGui,QtCore
 
 import numpy as np
 from myWidgets import *
-from Functions import *
+from ..Functions import *
 
 class DlgVariousTools(QtGui.QWidget):
     def __init__(self, dProject,parent=None):
