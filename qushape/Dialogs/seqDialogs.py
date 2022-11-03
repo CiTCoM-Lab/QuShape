@@ -1,8 +1,8 @@
 import numpy as np
 from myWidgets import *
-from Functions import *
+from ..Functions import *
 import shelve
-from imports import QtGui,QtCore
+from ..imports import QtGui,QtCore
 
 class DlgSeqAlign(QtGui.QWidget):
     def __init__(self,dProject,parent=None):

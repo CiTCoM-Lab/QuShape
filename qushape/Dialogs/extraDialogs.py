@@ -1,4 +1,4 @@
-from imports import QtGui,QtCore
+from ..imports import QtGui,QtCore
 
 import numpy as np
 from myWidgets import *

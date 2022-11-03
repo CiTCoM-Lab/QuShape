@@ -1,8 +1,8 @@
-from imports import QtGui,QtCore
+from ..imports import QtGui,QtCore
 
 import numpy as np
 from myWidgets import * #GroupBoxROI,ApplyChannel,ToolButton
-from Functions import * # smoothRect, smoothTriangle, smoothGaussian,DData,chKeysRS,enhance,baselineAdjust
+from ..Functions import * # smoothRect, smoothTriangle, smoothGaussian,DData,chKeysRS,enhance,baselineAdjust
 import shelve
 
 class DlgToolsAll(QtGui.QWidget):

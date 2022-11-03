@@ -1,6 +1,6 @@
-from imports import QtGui,QtCore
+from ..imports import QtGui,QtCore
 
-from Functions import readShapeData,readBaseFile,DProjectNew
+from ..Functions import readShapeData,readBaseFile,DProjectNew
 from myWidgets import DlgSelectFile, DlgSelectDir,hintLabel
 import shelve
 from copy import deepcopy
