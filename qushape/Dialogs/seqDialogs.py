@@ -412,7 +412,7 @@ class DlgSeqAlignRef(QtGui.QWidget):
         self.dataR,self.dataS=np.array([]),np.array([])
         
 #### BY REFERENCE
-        self.fileReadRef=DlgSelectFile('Ref. Proj.',"Reference Project (*.pyShape *.qushape)",self.dProject['dir'])
+        self.fileReadRef=DlgSelectFile('Ref. Proj.',"Reference Project (*.pyShape *.qushapey *.qushape)",self.dProject['dir'])
         if 'fNameRef' in self.dProject.keys():
             self.fileReadRef.lineEdit0.setText(self.dProject['fNameRef'])
         self.connect(self.fileReadRef.pushButton0,QtCore.SIGNAL("clicked()"),self.changeRefFile)

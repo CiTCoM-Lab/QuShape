@@ -6,6 +6,7 @@ import platform
 import sys
 import numpy as np
 import shelve
+import yaml
 import traceback
 from PyQt4 import QtCore,QtGui, Qt
 

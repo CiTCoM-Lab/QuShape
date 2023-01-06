@@ -124,7 +124,7 @@ class DlgNewProject1(QtGui.QDialog):
         self.fileRead0=DlgSelectFile('(+) Reaction',"ABIF or Text File (*.ab1 *.fsa *.txt)",self.dProject['dir'])
         self.fileRead1=DlgSelectFile('(-) Reaction',"ABIF or Text File (*.ab1 *.fsa *.txt)",self.dProject['dir'])
         self.fileRead2=DlgSelectFile('Sequence',"Base Files (*.txt *.fasta *.gbk *.seq )",self.dProject['dir'])
-        self.fileRead3=DlgSelectFile('Ref. Proj.',"Reference Project (*.pyshape *.qushape)",self.dProject['dir'])
+        self.fileRead3=DlgSelectFile('Ref. Proj.',"Reference Project (*.pyshape *.qushape *.qushapey)",self.dProject['dir'])
         
         self.fileRead0.lineEdit0.setText(self.dProject['fNameRX'])
         self.fileRead1.lineEdit0.setText(self.dProject['fNameBG'])
