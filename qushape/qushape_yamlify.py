@@ -2,10 +2,16 @@
 from imports import *
 
 
-def main_wrapper(argv):
-    assert (len(argv) == 2)
+def main_wrapper():
+    main(sys.argv)
 
-    dBase = shelve.open(argv[0])
+
+def main(argv):
+    #print(len(argv))
+    #print(argv)
+    assert len(argv) == 3
+
+    dBase = shelve.open(argv[1])
     dProject = deepcopy(dBase["dProject"])
     intervalData = deepcopy(dBase["intervalData"])
 
@@ -33,7 +39,7 @@ def main_wrapper(argv):
     base["intervalData"] = intervalData
     base["dProjRef"] = dProjRef
     base["dVar"] = dVar
-    with open(argv[1], "w") as fd:
+    with open(argv[2], "w") as fd:
         yaml.dump(
             base,
             fd,
@@ -41,4 +47,4 @@ def main_wrapper(argv):
 
 
 if __name__ == "__main__":
-    main_wrapper(sys.argv)
+    main_wrapper()

@@ -35,3 +35,10 @@ source activate qushape
 ```bash
 python src/main.py
 ```
+
+##  Generate conda project
+
+```bash
+mamba build . -c free
+anaconda upload $(mamba build . -c free --output) 
+```

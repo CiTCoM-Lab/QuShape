@@ -9,7 +9,7 @@ def main_wrapper():
     app.setOrganizationDomain("http://www.chem.unc.edu/rna/")
     app.setApplicationName("QuShape")
     app.setStyle(QtGui.QStyleFactory.create("Cleanlooks"))
-    iconFileName = os.getcwd() + "/Icons/QuShapeIcon.png"
+    iconFileName = os.path.dirname(__file__) + "/Icons/QuShapeIcon.png"
     app.setWindowIcon(QtGui.QIcon(iconFileName))
     form = MainWindow()
     form.show()

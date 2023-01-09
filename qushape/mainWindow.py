@@ -130,11 +130,12 @@ class MainWindow(QtGui.QMainWindow):
 
     def createMenu(self):
         ## FILE MENU
-        iconNew = self.currentDir + "/Icons/filenew.png"
-        iconOpen = self.currentDir + "/Icons/fileopen.png"
-        iconSave = self.currentDir + "/Icons/filesave.png"
-        iconSaveAs = self.currentDir + "/Icons/filesaveas.png"
-        iconQuit = self.currentDir + "/Icons/filequit.png"
+        qpath = os.path.dirname(__file__)
+        iconNew = qpath + "/Icons/filenew.png"
+        iconOpen = qpath + "/Icons/fileopen.png"
+        iconSave = qpath + "/Icons/filesave.png"
+        iconSaveAs = qpath + "/Icons/filesaveas.png"
+        iconQuit = qpath + "/Icons/filequit.png"
 
         newProjectAct = self.createAction(
             "&New Project", self.newProject, QtGui.QKeySequence.New, iconNew
@@ -173,7 +174,7 @@ class MainWindow(QtGui.QMainWindow):
         self.addActions(self.fileMenu, self.fileMenuActions[2:])
 
         ### EDIT MENU
-        iconUndo = self.currentDir + "/Icons/EditUndo.png"
+        iconUndo = os.path.dirname(__file__) + "/Icons/EditUndo.png"
         editUndo = self.createAction("&Undo", self.undo, "Ctrl+Z", iconUndo)
         # editRedo = self.createAction("&Redo", self.redo,shortcut="Ctrl+Y", tip="Redo")
         editLinePropAct = self.createAction("Line Properties", self.editLineProps)
