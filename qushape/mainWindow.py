@@ -291,7 +291,7 @@ class MainWindow(QtGui.QMainWindow):
 
         ###HELP MENU
         helpAboutAct = self.createAction("&About PyShape", self.helpAbout)
-        iconHelp = self.currentDir + "/Icons/HelpIcon.png"
+        iconHelp = os.path.dirname(__file__) + "/Icons/HelpIcon.png"
         helpHelpAct = self.createAction(
             "&Help", self.helpHelp, QtGui.QKeySequence.HelpContents, iconHelp
         )
@@ -1934,7 +1934,7 @@ if __name__ == "__main__":
     app.setOrganizationDomain("http://www.chem.unc.edu/rna/")
     app.setApplicationName("QuShape")
     app.setStyle(QtGui.QStyleFactory.create("Cleanlooks"))
-    iconFileName = os.getcwd() + "/Icons/QuShapeIcon.png"
+    iconFileName = os.path.dirname(__file__) + "/Icons/QuShapeIcon.png"
     app.setWindowIcon(QtGui.QIcon(iconFileName))
     form = MainWindow()
     form.show()

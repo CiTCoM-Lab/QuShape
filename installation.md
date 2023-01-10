@@ -42,3 +42,14 @@ python src/main.py
 mamba build . -c free
 anaconda upload $(mamba build . -c free --output) 
 ```
+
+If at startup you incounter this error : 
+```
+Fontconfig warning: FcPattern object weight does not accept value [40 205)
+[1]    107701 segmentation fault (core dumped)  qushape
+```
+
+You must run the following commands
+```bash
+sudo rm /var/cache/fontconfig/* -rf; rm ~/.cache/fontconfig/* -rf; fc-cache -r
+```
