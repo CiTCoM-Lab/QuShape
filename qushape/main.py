@@ -13,7 +13,7 @@ def main_wrapper():
     app.setWindowIcon(QtGui.QIcon(iconFileName))
     form = MainWindow()
     form.show()
-    #  form.loadInitialFile()
+    form.loadInitialFile()
     app.exec_()
 
 

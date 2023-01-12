@@ -1,5 +1,6 @@
 from funcMainWin import *
 import yaml
+import sys
 
 
 class MainWindow(QtGui.QMainWindow):
@@ -376,11 +377,11 @@ class MainWindow(QtGui.QMainWindow):
         self.addActions(self.fileMenu, self.fileMenuActions[2:])
 
     def loadInitialFile(self):
-        settings = QtCore.QSettings()
-        fname = unicode(settings.value("LastFile").toString())
-        if fname and QtCore.QFile.exists(fname):
-            self.projFileName = fname
-            self.openProject(self.projFileName)
+        if len(sys.argv) > 1:
+            fname = sys.argv[1]
+            if fname and QtCore.QFile.exists(fname):
+                self.projFileName = fname
+                self.openProject(self.projFileName)
 
     def mainWindowConnect(self):
         self.connect(
@@ -1938,5 +1939,5 @@ if __name__ == "__main__":
     app.setWindowIcon(QtGui.QIcon(iconFileName))
     form = MainWindow()
     form.show()
-    #  form.loadInitialFile()
+    form.loadInitialFile()
     app.exec_()

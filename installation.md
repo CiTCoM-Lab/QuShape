@@ -40,7 +40,7 @@ python src/main.py
 
 ```bash
 mamba build . -c free
-anaconda upload $(mamba build . -c free --output) 
+anaconda upload $(mamba build . -c free --output) --user Sargueil-CiTCoM 
 ```
 
 If at startup you incounter this error : 
