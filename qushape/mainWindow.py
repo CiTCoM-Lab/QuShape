@@ -130,7 +130,7 @@ class MainWindow(QtGui.QMainWindow):
         )
 
     def createMenu(self):
-        ## FILE MENU
+        # FILE MENU
         qpath = os.path.dirname(__file__)
         iconNew = qpath + "/Icons/filenew.png"
         iconOpen = qpath + "/Icons/fileopen.png"
@@ -174,7 +174,7 @@ class MainWindow(QtGui.QMainWindow):
         self.addActions(self.recentFilesMenu, (None, None))
         self.addActions(self.fileMenu, self.fileMenuActions[2:])
 
-        ### EDIT MENU
+        # EDIT MENU
         iconUndo = os.path.dirname(__file__) + "/Icons/EditUndo.png"
         editUndo = self.createAction("&Undo", self.undo, "Ctrl+Z", iconUndo)
         # editRedo = self.createAction("&Redo", self.redo,shortcut="Ctrl+Y", tip="Redo")
@@ -230,7 +230,7 @@ class MainWindow(QtGui.QMainWindow):
         self.toolsMenu = self.menuBar().addMenu("&Tools")
         self.addActions(self.toolsMenu, toolsMenuActs)
 
-        ### SEQUENCE MENU
+        # SEQUENCE MENU
         seqAlignAct = self.createAction("Sequence Alignment", self.toolActions)
         reactivityAct = self.createAction("Reactivity", self.toolActions)
         viewReportAct = self.createAction("View Report", self.viewReport)
@@ -260,7 +260,7 @@ class MainWindow(QtGui.QMainWindow):
         #  referenceMenu = self.seqMenu.addMenu("Analyze By Reference")
         #  self.addActions(referenceMenu,(sigAlignRefAct,scaleRefAct,seqAlignRefAct))
 
-        ### EXTRAS
+        # EXTRAS
         toolsScaleAct = self.createAction("Scale", self.toolActions)
         toolsSwapAct = self.createAction("Channel Swap", self.toolActions)
         toolsManualSignalAct = self.createAction(
@@ -290,7 +290,7 @@ class MainWindow(QtGui.QMainWindow):
         self.optionalToolsMenu = self.menuBar().addMenu("&Extras")
         self.addActions(self.optionalToolsMenu, optionaToolMenuActs)
 
-        ###HELP MENU
+        # HELP MENU
         helpAboutAct = self.createAction("&About PyShape", self.helpAbout)
         iconHelp = os.path.dirname(__file__) + "/Icons/HelpIcon.png"
         helpHelpAct = self.createAction(
@@ -300,7 +300,7 @@ class MainWindow(QtGui.QMainWindow):
 
         helpMenu = self.menuBar().addMenu("&Help")
         self.addActions(helpMenu, helpMenuActs)
-        #### TOOLBAR
+        # TOOLBAR
 
         fileToolbar = self.addToolBar("File")
         fileToolbar.setObjectName("FileToolBar")
@@ -410,7 +410,7 @@ class MainWindow(QtGui.QMainWindow):
             self.applySplitCombo,
         )
 
-        ### MATPLOT EVENT
+        # MATPLOT EVENT
         self.canvas.mpl_connect("button_press_event", self.onClick)
         self.canvas.mpl_connect("motion_notify_event", self.onMove)
         self.canvas.mpl_connect("button_release_event", self.onRelease)
@@ -464,7 +464,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.canvasWidth = 1000
         self.canvasHeigth = 550
-        ### Control Signals
+        # Control Signals
         self.isArrowSelectedRX = False
         self.isArrowSelectedBG = False
         self.isArrowSelected0 = False
@@ -973,7 +973,7 @@ class MainWindow(QtGui.QMainWindow):
         self.setLineColor()
         self.addRecentFile(self.projFileName)
 
-    ### OPEN PROJECT
+    # OPEN PROJECT
     def openProjectDlg(self):
         self.checkClickedApply()
         if self.okToContinue():
@@ -1120,7 +1120,7 @@ class MainWindow(QtGui.QMainWindow):
                 self.saveProject()
         return True
 
-    ##### EDIT FUNCTIONS####
+    # #### EDIT FUNCTIONS####
     def undo(self):
         row = self.scriptList.count() - 1
         if row == 0:
@@ -1238,6 +1238,7 @@ class MainWindow(QtGui.QMainWindow):
         self.dProject = deepcopy(self.dlg.dProjOut)
         self.intervalData.append(deepcopy(self.dProject))
         self.addScriptList()
+
         self.isClickedApply = False
 
         if self.dlg.name == "Sequence Alignment":
@@ -1275,9 +1276,11 @@ class MainWindow(QtGui.QMainWindow):
             script == "Reactivity"
             or script == "Reactivity by Reference"
             or script == "Automated by Reference"
+            or script == "Report"
         ):
             self.curScript = "View Report"
             self.viewReport()
+            self.connect(self.dlg.finishSaveTextButton, QtCore.SIGNAL('clicked()'), self.finishSaveProj)
             return
         elif script == "Sequence Alignment by Reference":
             self.curScript = "Reactivity by Reference"
@@ -1286,6 +1289,11 @@ class MainWindow(QtGui.QMainWindow):
         else:
             self.curScript = None
         self.setAction()
+
+    def finishSaveProj(self):
+        self.clickedDone(next=False)
+        self.saveProject()
+
 
     def addScriptList(self):
         self.lastScript = str(self.dlg.name)
@@ -1690,7 +1698,7 @@ class MainWindow(QtGui.QMainWindow):
         self.spanRect = createRects(self.fig.get_axes())
         self.canvas.draw()
 
-    #### PLOT  FUNCTIONS
+    # PLOT  FUNCTIONS
     def drawPeaks(self, dProject):
         self.dLinePeak = {}
         for key in dProject["chKeyRS"]:
@@ -1771,12 +1779,12 @@ class MainWindow(QtGui.QMainWindow):
         except:
             pass
 
-        ### Draw Vertical Lines
+        # Draw Vertical Lines
         self.verticalLines = createVerticalLines(self.fig.get_axes())
         self.setAxesLines()
         self.setAxesYLim()
         self.setAxesXLim()
-        ### Draw  Rectangular for Span
+        # Draw  Rectangular for Span
         self.spanRect = createRects(self.fig.get_axes())
         self.resizeFigure()
 
@@ -1835,7 +1843,7 @@ class MainWindow(QtGui.QMainWindow):
         )
         self.canvas.draw()
 
-    ### SPLIT CHANNELS
+    # SPLIT CHANNELS
     def applySplitCombo(self):
         if len(self.fig.get_axes()) < 1:
             return True
@@ -1853,7 +1861,7 @@ class MainWindow(QtGui.QMainWindow):
         else:
             self.drawFigure()
 
-    #### RESIZE FIGURE
+    # RESIZE FIGURE
     def resizeFigure(self):
         self.dVar["widthP"] = self.mainTopWidget.spinBoxWidth.value()
         self.dVar["heightP"] = self.mainTopWidget.spinBoxHeight.value()
@@ -1869,7 +1877,7 @@ class MainWindow(QtGui.QMainWindow):
             w = 16000
         self.canvas.resize(w, h)
 
-    ### CHANNEL ATTRIBUTES
+    # CHANNEL ATTRIBUTES
     def setLineColor(self):
         for key in self.dVar["lineColor"].keys():
             self.mainTopWidget.labelCh[key].setStyleSheet(
