@@ -5,7 +5,14 @@ import os
 import platform
 import sys
 import numpy as np
-import shelve
+
+is_legacy_files_available = True
+try:
+    import bsddb3
+    import shelve
+except ImportError:
+    is_legacy_files_available = False
+
 import yaml
 import traceback
 from PyQt4 import QtCore,QtGui, Qt

@@ -1,5 +1,5 @@
 from imports import *
-
+from qushape.utils import no_bsddb3_dialog
 msgAbout = """<b>QuShape</b> v %s
             <p>Copyright &copy; 2010 Weeks Lab. 
             <p>University of North Carolina at Chapel Hill 
@@ -53,7 +53,14 @@ def openProjFile(projFileName):
             with open(projFileName, "r") as fd:
                 dBase = yaml.load(fd, Loader=yaml.Loader)
         else:
-            dBase = shelve.open(projFileName)
+            if is_legacy_files_available: 
+                dBase = shelve.open(projFileName)
+            else:
+                dialog = QtGui.QMessageBox()
+                dialog.setText("Legacy format .qushape is not available because shelve+bsddb3 are not correctly installed, please use .qushapey format")
+                dialog.exec_()
+                return
+
         dProject = deepcopy(dBase["dProject"])
         intervalData = deepcopy(dBase["intervalData"])
 

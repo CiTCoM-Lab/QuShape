@@ -1,9 +1,15 @@
 import numpy as np
 from myWidgets import *
 from ..Functions import *
-import shelve
+is_legacy_files_available = True
+try:
+    import bsddb3
+    import shelve
+except ImportError:
+    is_legacy_files_available = False
 from ..imports import QtGui, QtCore
 
+import yaml
 
 class DlgSeqAlign(QtGui.QWidget):
     def __init__(self, dProject, parent=None):
@@ -538,7 +544,18 @@ class DlgSeqAlignRef(QtGui.QWidget):
     def changeRefFile(self):
         self.fName = str(self.fileReadRef.lineEdit0.text())
         if self.fName != '':
-            self.dBase = shelve.open(str(self.fName))
+            extFile = QtCore.QFileInfo(self.fName).suffix()
+            if extFile == "qushapey":
+                with open(self.fName, "r") as fd:
+                    self.dBase = yaml.load(fd, Loader=yaml.Loader)
+            else:
+                if is_legacy_files_available: 
+                    self.dBase = shelve.open(self.fName)
+                else:
+                    dialog = QtGui.QMessageBox()
+                    dialog.setText("Legacy format .qushape is not available because shelve+bsddb3 are not correctly installed, please use .qushapey format")
+                    dialog.exec_()
+                    return
             self.dProjRef = self.dBase['dProject']
             self.dProject['fNameRef'] = str(self.fName)
 
